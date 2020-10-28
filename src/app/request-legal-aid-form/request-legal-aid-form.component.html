@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="my-3">
+        <small class="text-primary" routerLink='/client'><i class="fas fa-angle-left"></i> Home</small>
+        <h2>Request Legal Aid</h2>
+    </div>
+
+    <div class="card p-3 mt-5">
+        <form>
+            <div class="form-group">
+                <label for="case-type">Case Type</label>
+                <select class="form-control" id='case-type'>
+      <option>Domestic abuse</option>
+      <option>Domestic dispute</option>
+      <option>Unlawful detention</option>
+    </select>
+            </div>
+            <div class="form-group">
+                <label for="case-location">Case Location</label>
+                <select class="form-control" id="case-location">
+      <option>Lagos</option>
+    </select>
+            </div>
+            <div class="form-group">
+                <label for="case-briefing">Case Briefing</label>
+                <textarea type="text" class="form-control" id="case-briefing"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>

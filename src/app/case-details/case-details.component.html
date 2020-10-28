@@ -1,0 +1,75 @@
+<div class="container mt-3">
+    <div class="mb-4 mt-3">
+        <small class="text-primary" routerLink='/client/home'><i class="fas fa-angle-left"></i> Home</small>
+        <h2>Case details</h2>
+    </div>
+
+    <div class="mb-3">
+        <div>
+            <b>Type:</b>
+            <div>{{case.caseType}}</div>
+        </div>
+    </div>
+
+    <div fxLayout='row' fxLayoutAlign='space-between center'>
+        <div>
+            <b>Date:</b>
+            <div>{{case.date | date}}</div>
+        </div>
+        <div>
+            <b>Location:</b>
+            <div>{{case.location}}</div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div>
+        <h2>Status</h2>
+
+        <div fxLayout='row' fxLayoutAlign='space-between center'>
+            <div>
+                <div>{{case.status}}</div>
+            </div>
+
+            <button (click)="open(content)" class="btn-sm btn-primary" *ngIf='case.status === "Assigned" || "Closed"'>View legal aid</button>
+        </div>
+    </div>
+
+    <hr>
+
+    <div>
+        <h2>Briefing</h2>
+        <div>{{case.briefing}}</div>
+    </div>
+</div>
+
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Legal aid details</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    <div class="modal-body">
+        <div>
+            <i>* Please get in touch with your assigned legal aid.</i>
+
+            <div>
+                <div class='mt-4' fxLayout='row' fxLayoutAlign='space-between center'>
+                    <b>Name:</b>
+                    <div>{{case.legalAid.firstName + ' ' + case.legalAid.lastName}}</div>
+                </div>
+                <div class='mt-4' fxLayout='row' fxLayoutAlign='space-between center'>
+                    <b>Phone number:</b>
+                    <div>{{case.legalAid.contact.number}}</div>
+                </div>
+                <div class='mt-4' fxLayout='row' fxLayoutAlign='space-between center'>
+                    <b>Email:</b>
+                    <div>{{case.legalAid.contact.email}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

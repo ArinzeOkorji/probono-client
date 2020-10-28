@@ -1,0 +1,25 @@
+<div class="card">
+    <div class="card-body">
+        <div gdColumns='1fr 1fr' gdRows='1fr 1fr' gdGap='15px'>
+            <div>
+                <div><b>Type:</b></div>
+                <div>{{case?.caseType}}</div>
+            </div>
+            <div>
+                <div><b>Date:</b></div>
+                <div>{{case?.date | date}}</div>
+            </div>
+            <div>
+                <div><b>Location:</b></div>
+                <div>{{case?.location}}</div>
+            </div>
+            <div>
+                <div><b>Status:</b></div>
+                <div>{{case?.status}}</div>
+            </div>
+        </div>
+        <div class="mt-3" fxLayout='row' fxLayoutAlign='center'>
+            <a (click)='viewCase(case)' class="card-link">View Details</a>
+        </div>
+    </div>
+</div>

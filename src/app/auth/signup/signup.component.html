@@ -1,0 +1,74 @@
+<div>
+    <div class="text-center my-5">
+        <h2>Weolcome to Probono!</h2>
+        <span>Connecting you to free legal aid</span>
+    </div>
+
+    <div class="card">
+        <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs" fxLayout='row'>
+            <li [ngbNavItem]="1" fxFlex='1 0 0' fxLayoutAlign='center center' [ngClass]='{"bg-primary": active === 1}'>
+                <a ngbNavLink>Clients</a>
+                <ng-template ngbNavContent>
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1">
+                        </div>
+
+                        <hr>
+
+                        <div class="form-group">
+                            <label for="firstName">First name</label>
+                            <input type="text" class="form-control" id="firstName" aria-describedby="emailHelp">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" class="form-control" id="lastName">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Address</label>
+                            <textarea type="text" class="form-control" id="lastName"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </ng-template>
+            </li>
+            <li [ngbNavItem]="2" fxFlex='1 0 0' fxLayoutAlign='center center' [ngClass]='{"bg-primary text-white": active === 2}'>
+                <a ngbNavLink>Legal Aids</a>
+                <ng-template ngbNavContent>
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1">
+                        </div>
+
+                        <hr>
+
+                        <div class="form-group">
+                            <label for="firstName">First name</label>
+                            <input type="text" class="form-control" id="firstName" aria-describedby="emailHelp">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" class="form-control" id="lastName">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Address</label>
+                            <textarea type="text" class="form-control" id="lastName"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </ng-template>
+            </li>
+        </ul>
+        <div [ngbNavOutlet]="nav" class="container pb-3 mt-2"></div>
+    </div>
+</div>
