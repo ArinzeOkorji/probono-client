@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  API_URL: 'https://pro-bono-server.herokuapp.com/'
+  API_URL: 'https://pro-bono-server.herokuapp.com'
 };
