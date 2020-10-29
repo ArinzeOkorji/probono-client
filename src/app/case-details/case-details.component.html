@@ -32,7 +32,9 @@
                 <div>{{case.status}}</div>
             </div>
 
-            <button (click)="open(content)" class="btn-sm btn-primary" *ngIf='case.status === "Assigned" || "Closed"'>View legal aid</button>
+            <div *ngIf='case.status === "Assigned" || "Closed"'>
+                <button (click)="open(content)" class="btn-sm btn-primary">View legal aid</button>
+            </div>
         </div>
     </div>
 
@@ -59,15 +61,15 @@
             <div>
                 <div class='mt-4' fxLayout='row' fxLayoutAlign='space-between center'>
                     <b>Name:</b>
-                    <div>{{case.legalAid.firstName + ' ' + case.legalAid.lastName}}</div>
+                    <div>{{case.legalAid?.firstName + ' ' + case.legalAid?.lastName}}</div>
                 </div>
                 <div class='mt-4' fxLayout='row' fxLayoutAlign='space-between center'>
                     <b>Phone number:</b>
-                    <div>{{case.legalAid.contact.number}}</div>
+                    <div>{{case.legalAid.contact?.number}}</div>
                 </div>
                 <div class='mt-4' fxLayout='row' fxLayoutAlign='space-between center'>
                     <b>Email:</b>
-                    <div>{{case.legalAid.contact.email}}</div>
+                    <div>{{case.legalAid.contact?.email}}</div>
                 </div>
             </div>
         </div>
