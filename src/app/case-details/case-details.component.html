@@ -32,7 +32,7 @@
                 <div>{{case.status}}</div>
             </div>
 
-            <div *ngIf='case.status === "Assigned" || "Closed"'>
+            <div *ngIf='case.status === "Assigned" || case.status === "Closed"'>
                 <button (click)="open(content)" class="btn-sm btn-primary">View legal aid</button>
             </div>
         </div>
