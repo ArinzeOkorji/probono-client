@@ -1,14 +1,30 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { fakeCases } from '../../fakeData/fakeData';
+import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Injectable({providedIn: 'root'})
 export class ClientHttpService {
-  constructor(private httpClient: HttpClient) { }
+  constructor(
+    private httpClient: HttpClient,
+    private router: Router
+    ) { }
   get() {
-    console.log(fakeCases)
     return of(fakeCases);
+  }
+
+  getCases(): Observable<any> {
+    const id = localStorage.getItem('id');
+    return this.httpClient.get(`${environment.API_URL}/api/clients/${id}/cases/`);
+  }
+
+  requestLegalAid(data): void {
+    this.httpClient.post(`${environment.API_URL}/api/cases`, data)
+    .subscribe((res) => {
+      this.router.navigate(['/client/home']);
+    });
   }
 }

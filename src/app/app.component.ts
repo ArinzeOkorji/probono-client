@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthHttpService } from './services/http/auth-http.service';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'pro-bono';
-  public isCollapsed = false;
+  public isCollapsed = true;
+
+  constructor(private auth: AuthHttpService){}
+
+  isLoggedIn(): boolean {
+    return this.auth.isLoggedIn();
+  }
+
+  logout() {
+    this.auth.logOut();
+  }
 }

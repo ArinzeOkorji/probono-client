@@ -6,7 +6,7 @@
   </button>
 
         <div [ngbCollapse]="isCollapsed" class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto" *ngIf='isLoggedIn()'>
                 <li class="nav-item" routerLinkActive='active' routerLink='/client/home'>
                     <a class="nav-link" (click)="isCollapsed = true">Home <span class="sr-only">(current)</span></a>
                 </li>
@@ -14,10 +14,10 @@
                     <a class="nav-link" (click)="isCollapsed = true">View Profile <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" (click)="isCollapsed = true" href="#">Logout</a>
+                    <a class="nav-link" (click)="isCollapsed = true; logout()">Logout</a>
                 </li>
             </ul>
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto" *ngIf='!isLoggedIn()'>
                 <li class="nav-item" routerLinkActive='active' routerLink='/auth/signup'>
                     <a class="nav-link" (click)="isCollapsed = true">Signup <span class="sr-only">(current)</span></a>
                 </li>

@@ -1,7 +1,10 @@
 <div>
     <div class="text-center my-5">
-        <h2>Weolcome to Probono!</h2>
+        <h2>Welcome to Probono!</h2>
         <span>Connecting you to free legal aid</span>
+        <div class="mt-3">
+            Already have an account? <a routerLink='../login'>Login</a>
+        </div>
     </div>
 
     <div class="card">
@@ -9,29 +12,33 @@
             <li [ngbNavItem]="1" fxFlex='1 0 0' fxLayoutAlign='center center' [ngClass]='{"bg-primary": active === 1}'>
                 <a ngbNavLink>Clients</a>
                 <ng-template ngbNavContent>
-                    <form>
+                    <form (ngSubmit)='signupClient(clientForm)' #clientForm='ngForm' ngForm>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Email</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <label for="clientEmail">Email</label>
+                            <input ngModel type="email" class="form-control" id="clientEmail" name="clientEmail" aria-describedby="emailHelp">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1">
+                            <label for="clientPassword">Password</label>
+                            <input ngModel type="password" class="form-control" id="clientPassword" name="clientPassword">
                         </div>
 
                         <hr>
 
                         <div class="form-group">
-                            <label for="firstName">First name</label>
-                            <input type="text" class="form-control" id="firstName" aria-describedby="emailHelp">
+                            <label for="clientFirstName">First name</label>
+                            <input ngModel type="text" class="form-control" id="clientFirstName" name="clientFirstName" aria-describedby="emailHelp">
                         </div>
                         <div class="form-group">
-                            <label for="lastName">Last Name</label>
-                            <input type="text" class="form-control" id="lastName">
+                            <label for="clientLastName">Last Name</label>
+                            <input ngModel type="text" class="form-control" id="clientLastName" name="clientLastName">
                         </div>
                         <div class="form-group">
-                            <label for="lastName">Address</label>
-                            <textarea type="text" class="form-control" id="lastName"></textarea>
+                            <label for="clientLastName">Number</label>
+                            <input ngModel type="number" class="form-control" id="clientNumber" name="clientNumber">
+                        </div>
+                        <div class="form-group">
+                            <label for="clientAddress">Address</label>
+                            <textarea type="text" class="form-control" id="clientAddress" ngModel name="clientAddress"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
@@ -42,33 +49,33 @@
                 <ng-template ngbNavContent>
                     <form>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Email</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <label for="legalAidEmail">Email</label>
+                            <input ngModel type="email" class="form-control" id="legalAidEmail" name="legalAidEmail" aria-describedby="emailHelp">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1">
+                            <label for="legalAidPassword">Password</label>
+                            <input ngModel type="password" class="form-control" id="legalAidPassword" name="legalAidPassword">
                         </div>
 
                         <hr>
 
                         <div class="form-group">
-                            <label for="firstName">First name</label>
-                            <input type="text" class="form-control" id="firstName" aria-describedby="emailHelp">
+                            <label for="legalAidFirstName">First name</label>
+                            <input ngModel type="text" class="form-control" id="legalAidFirstName" name="legalAidFirstName" aria-describedby="emailHelp">
                         </div>
                         <div class="form-group">
-                            <label for="lastName">Last Name</label>
-                            <input type="text" class="form-control" id="lastName">
+                            <label for="legalAidLastName">Last Name</label>
+                            <input ngModel type="text" class="form-control" id="legalAidLastName" name="legalAidLastName">
                         </div>
                         <div class="form-group">
-                            <label for="lastName">Address</label>
-                            <textarea type="text" class="form-control" id="lastName"></textarea>
+                            <label for="legalAidAddress">Address</label>
+                            <textarea type="text" class="form-control" id="legalAidAddress" name="legalAidAddress" ngModel></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </ng-template>
             </li>
         </ul>
-        <div [ngbNavOutlet]="nav" class="container pb-3 mt-2"></div>
+        <div [ngbNavOutlet]="nav" class="container py-3 mt-2"></div>
     </div>
 </div>

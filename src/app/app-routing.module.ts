@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { CaseDetailsComponent } from './case-details/case-details.component';
 import { RequestLegalAidFormComponent } from './request-legal-aid-form/request-legal-aid-form.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { LoggedInGuard } from './services/guards/logged-in.guard';
 
 export const COMPONENTS = [
   AppComponent,
@@ -28,14 +29,17 @@ const routes: Routes = [
   },
   {
     path: 'request-legal-aid',
+    canActivate: [LoggedInGuard],
     component: RequestLegalAidFormComponent
   },
   {
     path: 'case-details',
+    canActivate: [LoggedInGuard],
     component: CaseDetailsComponent
   },
   {
     path: 'profile',
+    canActivate: [LoggedInGuard],
     component: UserProfileComponent
   }
 ];

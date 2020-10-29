@@ -14,7 +14,7 @@ export class ClientHomeComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.httpService.get().subscribe((data) => {
+    this.httpService.getCases().subscribe((data) => {
       this.casesList = data;
     });
   }

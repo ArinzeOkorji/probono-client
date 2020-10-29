@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { SharedRoutingModule } from './shared-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SingleCaseComponent } from './single-case/single-case.component';
+import { FormsModule } from '@angular/forms';
 
 const COMPONENTS = [
   SingleCaseComponent
@@ -14,8 +15,9 @@ const COMPONENTS = [
   imports: [
     CommonModule,
     SharedRoutingModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FormsModule
   ],
-  exports: [...COMPONENTS, FlexLayoutModule]
+  exports: [...COMPONENTS, FlexLayoutModule, FormsModule]
 })
 export class SharedModule { }

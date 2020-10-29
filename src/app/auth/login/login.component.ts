@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthHttpService } from 'src/app/services/http/auth-http.service';
 
 @Component({
   selector: 'app-login',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  active = 1;
 
-  constructor() { }
+  constructor(
+    private http: AuthHttpService
+  ) { }
 
   ngOnInit(): void {
   }
 
+  loginClient(form): void {
+    const data = {
+      email: form.value.clientEmail.toLowerCase(),
+      password: form.value.clientPassword
+    };
+    this.http.clientLogin(data);
+  }
 }
