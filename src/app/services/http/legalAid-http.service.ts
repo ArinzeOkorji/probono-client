@@ -9,6 +9,6 @@ export class LegalAidHttpService {
 
   getCases(): Observable<any> {
     const id = localStorage.getItem('id');
-    return this.httpClient.get(`${environment.API_URL}/api/clients/${id}/cases/`);
+    return this.httpClient.get(`${environment.API_URL}/api/legal/${id}/cases/`);
   }
 }
