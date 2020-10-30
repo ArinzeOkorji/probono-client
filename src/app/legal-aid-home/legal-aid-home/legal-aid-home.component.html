@@ -6,7 +6,7 @@
     <div class="mt-3" gdColumns='1fr' gdGap='20px'>
         <h4>Assigned Case</h4>
         <div *ngIf='assignedCase.length === 0' class='text-center'>You have no assigned case at the moment</div>
-        <app-single-case *ngIf='assignedCase.length > 0' [case]='assignedCase'></app-single-case>
+        <app-single-case *ngIf='assignedCase.length > 0' [case]='assignedCase[0]'></app-single-case>
     </div>
     <div class="mt-5">
         <h4>All Cases</h4>
