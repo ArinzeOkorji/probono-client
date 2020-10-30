@@ -8,13 +8,12 @@ import { LegalAidHttpService } from '../../services/http/legalAid-http.service';
 })
 export class LegalAidHomeComponent implements OnInit {
   casesList: any;
-  assignedCase: any;
+  assignedCase = [];
 
   constructor(private httpService: LegalAidHttpService) { }
 
   ngOnInit(): void {
     this.httpService.getCases().subscribe((data) => {
-      console.log(data);
       this.casesList = data;
       this.assignedCase = this.casesList.filter((singleCase) => {
         return singleCase.status === 'Assigned';
