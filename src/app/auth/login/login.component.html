@@ -29,7 +29,7 @@
             <li [ngbNavItem]="2" fxFlex='1 0 0' fxLayoutAlign='center center' [ngClass]='{"bg-primary text-white": active === 2}'>
                 <a ngbNavLink>Legal Aids</a>
                 <ng-template ngbNavContent>
-                    <form>
+                    <form (ngSubmit)="loginLegalAid(legalAidForm)" #legalAidForm='ngForm' ngForm>
                         <div class="form-group">
                             <label for="legalAidEmail">Email</label>
                             <input ngModel type="email" class="form-control" id="legalAidEmail" name="legalAidEmail" aria-describedby="emailHelp">

@@ -31,8 +31,33 @@ export class AuthHttpService {
     });
   }
 
+  legalAidSignup(data): void {
+    this.httpClient.post(`${environment.API_URL}/api/signup/legalAid`, data)
+    .subscribe((res: ICredentials) => {
+      localStorage.setItem('id', res.user._id);
+      localStorage.setItem('token', res.user.token);
+      localStorage.setItem('userType', res.user.userType);
+
+      this.fetch();
+
+      this.navigateToHomepage();
+    });
+  }
+
   clientLogin(data): void  {
     this.httpClient.post(`${environment.API_URL}/api/login/client`, data)
+    .subscribe((res: ICredentials) => {
+      localStorage.setItem('id', res.user._id);
+      localStorage.setItem('token', res.user.token);
+      localStorage.setItem('userType', res.user.userType);
+
+      this.fetch();
+      this.navigateToHomepage();
+    });
+  }
+
+  legalAidLogin(data): void  {
+    this.httpClient.post(`${environment.API_URL}/api/login/legalAid`, data)
     .subscribe((res: ICredentials) => {
       localStorage.setItem('id', res.user._id);
       localStorage.setItem('token', res.user.token);

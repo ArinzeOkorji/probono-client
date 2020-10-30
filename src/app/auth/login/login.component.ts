@@ -23,4 +23,12 @@ export class LoginComponent implements OnInit {
     };
     this.http.clientLogin(data);
   }
+
+  loginLegalAid(form): void {
+    const data = {
+      email: form.value.legalAidEmail.toLowerCase(),
+      password: form.value.legalAidPassword
+    };
+    this.http.legalAidLogin(data);
+  }
 }

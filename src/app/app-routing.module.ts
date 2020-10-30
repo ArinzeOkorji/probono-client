@@ -29,6 +29,11 @@ const routes: Routes = [
     loadChildren: () => import('./client-home/client-home.module').then(m => m.ClientHomeModule)
   },
   {
+    path: 'legal-aid',
+    canActivate: [LoggedInGuard],
+    loadChildren: () => import('./legal-aid-home/legal-aid-home.module').then(m => m.LegalAidHomeModule)
+  },
+  {
     path: 'request-legal-aid',
     canActivate: [LoggedInGuard],
     component: RequestLegalAidFormComponent

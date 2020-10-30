@@ -32,4 +32,18 @@ export class SignupComponent implements OnInit {
     this.http.clientSignUp(data);
   }
 
+  createLegalAid(form) {
+    const data = {
+      firstName: form.value.legalAidFirstName,
+      lastName: form.value.legalAidLastName,
+      password: form.value.legalAidPassword,
+      contact: {
+        number: form.value.legalAidNumber,
+        email: form.value.legalAidEmail.toLowerCase()
+      }
+    };
+
+    this.http.legalAidSignup(data);
+  }
+
 }
