@@ -18,7 +18,7 @@ export class ClientHttpService {
 
   getCases(): Observable<any> {
     const id = localStorage.getItem('id');
-    return this.httpClient.get(`${environment.API_URL}/api/clients/${id}/cases/`);
+    return this.httpClient.get(`${environment.API_URL}/api/client/${id}/cases/`);
   }
 
   requestLegalAid(data): void {
@@ -34,6 +34,6 @@ export class ClientHttpService {
   }
 
   closeCase(caseId): Observable<any> {
-    return this.httpClient.put(`${environment.API_URL}/api/clients/close-case/${caseId}`, {});
+    return this.httpClient.put(`${environment.API_URL}/api/client/close-case/${caseId}`, {});
   }
 }
