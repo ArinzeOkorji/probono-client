@@ -9,6 +9,7 @@ import { AuthHttpService } from '../../services/http/auth-http.service';
 })
 export class SignupComponent implements OnInit {
   active = 1;
+  updating = false;
 
   constructor(
     private http: AuthHttpService
@@ -18,6 +19,7 @@ export class SignupComponent implements OnInit {
   }
 
   signupClient(form) {
+    this.updating = true;
     const data = {
       firstName: form.value.clientFirstName,
       lastName: form.value.clientLastName,
@@ -33,6 +35,7 @@ export class SignupComponent implements OnInit {
   }
 
   createLegalAid(form) {
+    this.updating = true;
     const data = {
       firstName: form.value.legalAidFirstName,
       lastName: form.value.legalAidLastName,

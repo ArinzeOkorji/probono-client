@@ -15,7 +15,7 @@
                     <form (ngSubmit)='signupClient(clientForm)' #clientForm='ngForm' ngForm>
                         <div class="form-group">
                             <label for="clientEmail">Email</label>
-                            <input ngModel type="email" class="form-control" id="clientEmail" name="clientEmail" aria-describedby="emailHelp">
+                            <input ngModel type="email" class="form-control" id="clientEmail" name="clientEmail" aria-describedby="emailHelp" email>
                         </div>
                         <div class="form-group">
                             <label for="clientPassword">Password</label>
@@ -40,7 +40,7 @@
                             <label for="clientAddress">Address</label>
                             <textarea type="text" class="form-control" id="clientAddress" ngModel name="clientAddress"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Submit <span *ngIf='updating' class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span></button>
                     </form>
                 </ng-template>
             </li>
@@ -50,7 +50,7 @@
                     <form (ngSubmit)="createLegalAid(legalAidForm)" #legalAidForm='ngForm' ngForm>
                         <div class="form-group">
                             <label for="legalAidEmail">Email</label>
-                            <input ngModel type="email" class="form-control" id="legalAidEmail" name="legalAidEmail" aria-describedby="emailHelp">
+                            <input ngModel type="email" class="form-control" id="legalAidEmail" name="legalAidEmail" aria-describedby="emailHelp" email>
                         </div>
                         <div class="form-group">
                             <label for="legalAidPassword">Password</label>
@@ -71,7 +71,7 @@
                             <label for="legalAidLastName">Number</label>
                             <input ngModel type="number" class="form-control" id="legalAidNumber" name="legalAidNumber">
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Submit <span *ngIf='updating' class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span></button>
                     </form>
                 </ng-template>
             </li>

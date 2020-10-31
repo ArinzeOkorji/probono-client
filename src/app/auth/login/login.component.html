@@ -16,13 +16,13 @@
                     <form (ngSubmit)='loginClient(clientForm)' #clientForm='ngForm' ngForm>
                         <div class="form-group">
                             <label for="clientEmail">Email</label>
-                            <input ngModel type="email" class="form-control" id="clientEmail" name="clientEmail" aria-describedby="emailHelp">
+                            <input ngModel type="email" class="form-control" id="clientEmail" name="clientEmail" aria-describedby="emailHelp" email>
                         </div>
                         <div class="form-group">
                             <label for="clientPassword">Password</label>
                             <input ngModel type="password" class="form-control" id="clientPassword" name="clientPassword">
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Submit <span *ngIf='updating' class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span></button>
                     </form>
                 </ng-template>
             </li>
@@ -32,13 +32,13 @@
                     <form (ngSubmit)="loginLegalAid(legalAidForm)" #legalAidForm='ngForm' ngForm>
                         <div class="form-group">
                             <label for="legalAidEmail">Email</label>
-                            <input ngModel type="email" class="form-control" id="legalAidEmail" name="legalAidEmail" aria-describedby="emailHelp">
+                            <input ngModel type="email" class="form-control" id="legalAidEmail" name="legalAidEmail" aria-describedby="emailHelp" email>
                         </div>
                         <div class="form-group">
                             <label for="legalAidPassword">Password</label>
                             <input ngModel type="password" class="form-control" id="legalAidPassword" name="legalAidPassword">
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Submit <span *ngIf='updating' class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span></button>
                     </form>
                 </ng-template>
             </li>

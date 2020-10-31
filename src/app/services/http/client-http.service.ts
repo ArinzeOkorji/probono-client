@@ -9,8 +9,7 @@ import { Router } from '@angular/router';
 @Injectable({providedIn: 'root'})
 export class ClientHttpService {
   constructor(
-    private httpClient: HttpClient,
-    private router: Router
+    private httpClient: HttpClient
     ) { }
   get() {
     return of(fakeCases);
@@ -21,11 +20,8 @@ export class ClientHttpService {
     return this.httpClient.get(`${environment.API_URL}/api/client/${id}/cases/`);
   }
 
-  requestLegalAid(data): void {
-    this.httpClient.post(`${environment.API_URL}/api/cases`, data)
-    .subscribe((res) => {
-      this.router.navigate(['/client/home']);
-    });
+  requestLegalAid(data): Observable<any> {
+    return this.httpClient.post(`${environment.API_URL}/api/cases`, data);
   }
 
   getSingleCase(data): Observable<any> {

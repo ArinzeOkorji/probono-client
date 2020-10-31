@@ -8,6 +8,7 @@ import { AuthHttpService } from 'src/app/services/http/auth-http.service';
 })
 export class LoginComponent implements OnInit {
   active = 1;
+  updating = false;
 
   constructor(
     private http: AuthHttpService
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginClient(form): void {
+    this.updating = true;
     const data = {
       email: form.value.clientEmail.toLowerCase(),
       password: form.value.clientPassword
@@ -25,6 +27,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginLegalAid(form): void {
+    this.updating = true;
     const data = {
       email: form.value.legalAidEmail.toLowerCase(),
       password: form.value.legalAidPassword

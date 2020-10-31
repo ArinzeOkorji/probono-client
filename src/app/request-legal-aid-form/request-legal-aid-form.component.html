@@ -24,7 +24,7 @@
                 <label for="case-briefing">Case Briefing</label>
                 <textarea type="text" class="form-control" name="briefing" id="case-briefing" ngModel></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Submit <span *ngIf='updating' class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span></button>
         </form>
     </div>
 </div>
