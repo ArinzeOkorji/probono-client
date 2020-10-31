@@ -8,7 +8,7 @@ import { ClientHttpService } from '../../services/http/client-http.service';
   styleUrls: ['./client-home.component.scss']
 })
 export class ClientHomeComponent implements OnInit {
-  casesList = [];
+  casesList: any = undefined;
   searched = false;
 
   constructor(private httpService: ClientHttpService) {

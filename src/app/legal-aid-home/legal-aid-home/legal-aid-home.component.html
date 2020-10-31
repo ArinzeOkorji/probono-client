@@ -22,12 +22,22 @@
         <h4>Assigned Case</h4>
         <div *ngIf='assignedCase.length === 0' class='text-center'>You have no assigned case at the moment</div>
         <app-single-case *ngIf='assignedCase.length > 0' [case]='assignedCase[0]'></app-single-case>
+        <div fxLayout='row' fxLayoutAlign='center'>
+            <div class="spinner-border text-primary" role="status" *ngIf='assignedCase === undefined'>
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
     </div>
     <div class="mt-5">
         <h4>All Cases</h4>
         <hr>
         <div class="mt-3" gdColumns='1fr' gdGap='20px'>
             <app-single-case *ngFor='let case of casesList' [case]='case'></app-single-case>
+        </div>
+        <div fxLayout='row' fxLayoutAlign='center'>
+            <div class="spinner-border text-primary" role="status" *ngIf='casesList === undefined'>
+                <span class="sr-only">Loading...</span>
+            </div>
         </div>
     </div>
 </div>

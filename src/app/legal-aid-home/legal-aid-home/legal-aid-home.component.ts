@@ -7,8 +7,8 @@ import { LegalAidHttpService } from '../../services/http/legalAid-http.service';
   styleUrls: ['./legal-aid-home.component.scss']
 })
 export class LegalAidHomeComponent implements OnInit {
-  assignedCase = [];
-  casesList = [];
+  assignedCase: any = undefined;
+  casesList: any = undefined;
   searched = false;
 
   constructor(private httpService: LegalAidHttpService) { }
