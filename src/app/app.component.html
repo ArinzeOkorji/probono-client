@@ -1,13 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-        <a class="navbar-brand" routerLink='/'>Probono</a>
+        <a class="navbar-brand" routerLink='/{{userType}}/home'>Probono</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" (click)="isCollapsed = !isCollapsed" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
         <div [ngbCollapse]="isCollapsed" class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto" *ngIf='isLoggedIn()'>
-                <li class="nav-item" routerLinkActive='active' routerLink='/client/home'>
+                <li class="nav-item" routerLinkActive='active' routerLink='/{{userType}}/home'>
                     <a class="nav-link" (click)="isCollapsed = true">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item" routerLinkActive='active' routerLink='/profile'>

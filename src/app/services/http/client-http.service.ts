@@ -27,4 +27,13 @@ export class ClientHttpService {
       this.router.navigate(['/client/home']);
     });
   }
+
+  getSingleCase(data): Observable<any> {
+    const id = localStorage.getItem('id');
+    return this.httpClient.get(`${environment.API_URL}/api/cases/${id}/${data}`);
+  }
+
+  closeCase(caseId): Observable<any> {
+    return this.httpClient.put(`${environment.API_URL}/api/clients/close-case/${caseId}`, {});
+  }
 }

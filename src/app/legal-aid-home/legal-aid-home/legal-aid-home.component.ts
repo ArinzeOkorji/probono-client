@@ -7,12 +7,31 @@ import { LegalAidHttpService } from '../../services/http/legalAid-http.service';
   styleUrls: ['./legal-aid-home.component.scss']
 })
 export class LegalAidHomeComponent implements OnInit {
-  casesList: any;
   assignedCase = [];
+  casesList = [];
+  searched = false;
 
   constructor(private httpService: LegalAidHttpService) { }
 
   ngOnInit(): void {
+    this.getAllCases();
+  }
+
+  searchCase(form): void {
+    this.casesList = undefined;
+    this.httpService.getSingleCase(form.value.caseId).subscribe((data) => {
+      if (data) {
+        this.searched = true;
+        this.casesList = [data];
+      } else {
+        this.casesList = data;
+      }
+    });
+  }
+
+  getAllCases(): void {
+    this.searched = false;
+    this.casesList = undefined;
     this.httpService.getCases().subscribe((data) => {
       this.casesList = data;
       this.assignedCase = this.casesList.filter((singleCase) => {

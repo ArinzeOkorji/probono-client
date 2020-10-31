@@ -9,11 +9,30 @@ import { ClientHttpService } from '../../services/http/client-http.service';
 })
 export class ClientHomeComponent implements OnInit {
   casesList = [];
+  searched = false;
 
   constructor(private httpService: ClientHttpService) {
    }
 
   ngOnInit(): void {
+    this.getAllCases();
+  }
+
+  searchCase(form): void {
+    this.casesList = undefined;
+    this.httpService.getSingleCase(form.value.caseId).subscribe((data) => {
+      if (data) {
+        this.searched = true;
+        this.casesList = [data];
+      } else {
+        this.casesList = data;
+      }
+    });
+  }
+
+  getAllCases(): void {
+    this.searched = false;
+    this.casesList = undefined;
     this.httpService.getCases().subscribe((data) => {
       this.casesList = data;
     });

@@ -9,6 +9,7 @@ import { AuthHttpService } from './services/http/auth-http.service';
 export class AppComponent {
   title = 'pro-bono';
   public isCollapsed = true;
+  userType = localStorage.getItem('userType');
 
   constructor(private auth: AuthHttpService){}
 

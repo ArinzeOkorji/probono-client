@@ -1,6 +1,21 @@
 <div class="body">
-    <div class="mt-3" fxLayout='row' fxLayoutAlign='space-between center'>
-        <h1 class="text-primary">Home</h1>
+    <div>
+        <div class="mt-3" fxLayout='row' fxLayoutAlign='space-between center'>
+            <h1 class="text-primary">Home</h1>
+        </div>
+
+        <!-- <div class="mt-3">
+      <form (ngSubmit)='searchCase(searchForm)' #searchForm='ngForm' ngForm>
+          <div class="form-group input-group">
+              <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-search"></i></span>
+              </div>
+              <input type="text" class="form-control" ngModel name="caseId" id="caseId" placeholder="Search case by id" aria-describedby="emailHelp">
+          </div>
+      </form>
+
+      <a (click)='getAllCases()' *ngIf='searched' class="text-primary">Clear search</a>
+  </div> -->
     </div>
 
     <div class="mt-3" gdColumns='1fr' gdGap='20px'>

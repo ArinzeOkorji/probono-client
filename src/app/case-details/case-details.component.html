@@ -1,24 +1,26 @@
 <div class="container mt-3">
-    <div class="mb-4 mt-3">
-        <small class="text-primary" routerLink='/client/home'><i class="fas fa-angle-left"></i> Home</small>
-        <h2>Case details</h2>
+    <div class="mb-4 mt-3" fxLayout='row' fxLayoutAlign='space-between center'>
+        <div>
+            <small class="text-primary" routerLink='/{{userType}}/home'><i class="fas fa-angle-left"></i> Home</small>
+            <h2>Case details</h2>
+        </div>
     </div>
 
     <div class="mb-3">
         <div>
             <b>Type:</b>
-            <div>{{case.caseType}}</div>
+            <div>{{case?.caseType}}</div>
         </div>
     </div>
 
     <div fxLayout='row' fxLayoutAlign='space-between center'>
         <div>
             <b>Date:</b>
-            <div>{{case.date | date}}</div>
+            <div>{{case?.date | date}}</div>
         </div>
         <div>
             <b>Location:</b>
-            <div>{{case.location}}</div>
+            <div>{{case?.location}}</div>
         </div>
     </div>
 
@@ -29,10 +31,10 @@
 
         <div fxLayout='row' fxLayoutAlign='space-between center'>
             <div>
-                <div>{{case.status}}</div>
+                <div>{{case?.status}}</div>
             </div>
 
-            <div *ngIf='case.status === "Assigned" || case.status === "Closed"'>
+            <div *ngIf='case?.status === "Assigned" || case?.status === "Closed"'>
                 <button (click)="open(content)" class="btn-sm btn-primary">View legal aid</button>
             </div>
         </div>
@@ -42,7 +44,14 @@
 
     <div>
         <h2>Briefing</h2>
-        <div>{{case.briefing}}</div>
+        <div>{{case?.briefing}}</div>
+    </div>
+
+    <hr>
+
+    <div>
+        <button class="btn btn-block" (click)='closeCase(case?._id)' *ngIf='userType === "client"' [ngClass]='{"btn-primary": !case?.caseClosed?.includes("client"), "btn-danger": case?.caseClosed?.includes("client")}'>{{case?.caseClosed?.includes("client") ? "Case closed (Client)" : "Close case (Client)"}} <span *ngIf='updating' class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span></button>
+        <button class="btn btn-block" (click)='closeCase(case?._id)' *ngIf='userType === "legal"' [ngClass]='{"btn-primary": !case?.caseClosed?.includes("legal-aid"), "btn-danger": case?.caseClosed?.includes("legal")}'>{{case?.caseClosed?.includes("legal-aid") ? "Case closed (Legal)" : "Close case (Legal)"}}</button>
     </div>
 </div>
 
@@ -61,17 +70,25 @@
             <div>
                 <div class='mt-4' fxLayout='row' fxLayoutAlign='space-between center'>
                     <b>Name:</b>
-                    <div>{{case.legalAid?.firstName + ' ' + case.legalAid?.lastName}}</div>
+                    <div>{{case?.legalAid?.firstName + ' ' + case?.legalAid?.lastName}}</div>
                 </div>
                 <div class='mt-4' fxLayout='row' fxLayoutAlign='space-between center'>
                     <b>Phone number:</b>
-                    <div>{{case.legalAid.contact?.number}}</div>
+                    <div>{{case?.legalAid.contact?.number}}</div>
                 </div>
                 <div class='mt-4' fxLayout='row' fxLayoutAlign='space-between center'>
                     <b>Email:</b>
-                    <div>{{case.legalAid.contact?.email}}</div>
+                    <div>{{case?.legalAid.contact?.email}}</div>
                 </div>
             </div>
         </div>
     </div>
 </ng-template>
+
+<ngb-toast style="position: absolute; top: 0; right: 0;" *ngIf='toast.text !== ""' [class]="toast.className" [autohide]="true" [delay]="toast.delay || 5000" (hide)="removeToast()">
+
+    <ng-template [ngIf]="!toast" [ngIfElse]="text">
+        <ng-template [ngTemplateOutlet]="toast.text"></ng-template>
+    </ng-template>
+    <ng-template #text>{{ toast?.text }}</ng-template>
+</ngb-toast>
