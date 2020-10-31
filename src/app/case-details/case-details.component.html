@@ -51,7 +51,7 @@
 
     <div>
         <button class="btn btn-block" (click)='closeCase(case?._id)' *ngIf='userType === "client"' [ngClass]='{"btn-primary": !case?.caseClosed?.includes("client"), "btn-danger": case?.caseClosed?.includes("client")}'>{{case?.caseClosed?.includes("client") ? "Case closed (Client)" : "Close case (Client)"}} <span *ngIf='updating' class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span></button>
-        <button class="btn btn-block" (click)='closeCase(case?._id)' *ngIf='userType === "legal"' [ngClass]='{"btn-primary": !case?.caseClosed?.includes("legal-aid"), "btn-danger": case?.caseClosed?.includes("legal")}'>{{case?.caseClosed?.includes("legal-aid") ? "Case closed (Legal)" : "Close case (Legal)"}}</button>
+        <button class="btn btn-block" (click)='closeCase(case?._id)' *ngIf='userType === "legal-aid"' [ngClass]='{"btn-primary": !case?.caseClosed?.includes("legal-aid"), "btn-danger": case?.caseClosed?.includes("legal-aid")}'>{{case?.caseClosed?.includes("legal-aid") ? "Case closed (Legal)" : "Close case (Legal)"}}</button>
     </div>
 </div>
 

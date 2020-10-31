@@ -73,6 +73,8 @@ export class CaseDetailsComponent implements OnInit, OnDestroy {
         this.updating = false;
         if (res.message) {
           this.case.caseClosed.push(this.userType);
+          localStorage.removeItem('case'),
+      localStorage.setItem('case', JSON.stringify(this.case));
           console.log(res);
           this.toast.text = res.message;
           this.toast.className = 'bg-success text-light';

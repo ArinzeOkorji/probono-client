@@ -97,7 +97,9 @@ export class AuthHttpService {
   fetch(): void {
     const id = localStorage.getItem('id');
 
-    this.httpClient.get(`${environment.API_URL}/api/clients/${id}/profile`)
+    const userType = localStorage.getItem('userType');
+
+    this.httpClient.get(`${environment.API_URL}/api/${userType}/${id}/profile`)
       .subscribe((profile) => {
         localStorage.setItem('profile', JSON.stringify(profile));
       });
