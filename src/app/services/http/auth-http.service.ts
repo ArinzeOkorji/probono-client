@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
+import { ClientHttpService } from './client-http.service';
 
 interface ICredentials {
   user: {
@@ -15,7 +16,8 @@ interface ICredentials {
 export class AuthHttpService {
   constructor(
     private httpClient: HttpClient,
-    private router: Router
+    private router: Router,
+    private clientHttp: ClientHttpService
     ) { }
 
   clientSignUp(data): void {
@@ -69,7 +71,7 @@ export class AuthHttpService {
   }
 
   isLoggedIn(): boolean  {
-    let token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
     if (typeof token !== 'string') {
       return false;
     } else {
@@ -102,6 +104,18 @@ export class AuthHttpService {
     this.httpClient.get(`${environment.API_URL}/api/${userType}/${id}/profile`)
       .subscribe((profile) => {
         localStorage.setItem('profile', JSON.stringify(profile));
+
+        let pendingCase: any = localStorage.getItem('pendingCase');
+        let userProfile = localStorage.getItem('profile');
+        userProfile = JSON.parse(userProfile);
+        pendingCase = JSON.parse(pendingCase);
+        if (pendingCase) {
+          pendingCase.client = userProfile;
+          this.clientHttp.requestLegalAid(pendingCase)
+          .subscribe((res) => {
+            localStorage.removeItem('pendingCase');
+          });
+    }
       });
   }
 

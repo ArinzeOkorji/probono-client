@@ -9,6 +9,7 @@ import { ClientHttpService } from '../services/http/client-http.service';
 })
 export class RequestLegalAidFormComponent implements OnInit {
   updating = false;
+  token = localStorage.getItem('token');
 
   constructor(
     private http: ClientHttpService,
@@ -17,7 +18,12 @@ export class RequestLegalAidFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  submitForm(form): void {
+  submitForm(form): void {;
+
+    if (typeof this.token !== 'string') {
+      localStorage.setItem('pendingCase', JSON.stringify(form.value));
+      this.router.navigate(['auth/login']);
+    } else {
     this.updating = true;
     let clientDetails = localStorage.getItem('profile');
     clientDetails = JSON.parse(clientDetails);
@@ -29,6 +35,7 @@ export class RequestLegalAidFormComponent implements OnInit {
     (err) => {
       this.updating = false;
     });
+    }
   }
 
 }

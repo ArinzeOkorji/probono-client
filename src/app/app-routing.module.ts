@@ -16,7 +16,7 @@ export const COMPONENTS = [
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'client',
+    redirectTo: 'request-legal-aid',
     pathMatch: 'full'
   },
   {
@@ -35,7 +35,6 @@ const routes: Routes = [
   },
   {
     path: 'request-legal-aid',
-    canActivate: [LoggedInGuard],
     component: RequestLegalAidFormComponent
   },
   {
